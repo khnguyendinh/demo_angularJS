@@ -1,0 +1,17 @@
+<html ng-app="bindingModule">
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="bindingObject2.js"></script>
+<body >
+<p>This is the binding object.</p>
+<div ng-controller="bindingCtrl" ng-app="bindingModule" >
+    <div>First Name :<input type="text" ng-model="employee.FirstName"/></div>
+    <div>Last Name :<input type="text" ng-model="employee.LastName"/></div>
+    <div>Gender :<input type="text" ng-model="employee.Gender"/></div>
+
+    <div>First Name :{{employee.FirstName}}</div>
+    <div>Last Name :{{employee.LastName}}</div>
+    <div>Gender :{{employee.Gender}}</div>
+</div>
+</body>
+</html>
+
