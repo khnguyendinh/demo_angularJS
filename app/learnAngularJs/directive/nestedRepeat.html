@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="nestedRepeat.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="app">
+<div ng-controller="nestedRepeatController">
+    <ul>
+        <li ng-repeat="counntry in countries">
+            {{counntry.name}}
+             <ul>
+                <li ng-repeat="city in counntry.cities">
+                    {{city.name}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

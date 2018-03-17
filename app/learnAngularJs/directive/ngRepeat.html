@@ -1,0 +1,32 @@
+<html ng-app="ngRepeatModule">
+<head>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="ngRepeat.js"></script>
+    <meta charset="utf-8">
+</head>
+<body >
+<p>This is the ng Repeat.</p>
+<div  ng-controller="Ctrl">
+    <table>
+        <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Gender</td>
+            <td>Salary</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.salary}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{{DemoMessage}}
+</body>
+</html>
+
