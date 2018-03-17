@@ -1,0 +1,30 @@
+<html ng-app="appClick">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="clickEvent.js"></script>
+</head>
+<body >
+<div ng-controller="handleEvent">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Likes</td>
+            <td>DisLikes</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="techno in tech">
+            <td>{{techno.Name}}</td>
+            <td>{{techno.Likes}}</td>
+            <td>{{techno.Dislikes}}</td>
+            <td>
+                <button ng-click="increaLike(techno)">Like</button>
+                <button ng-click="decreaLike(techno)">DisLike</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
