@@ -9,11 +9,12 @@
 <body ng-app="app">
 <div ng-controller="nestedRepeatController">
     <ul>
-        <li ng-repeat="counntry in countries">
-            {{counntry.name}}
+        <li ng-repeat="counntry in countries" ng-init="parentIndex=$index" >
+            {{counntry.name}} - Index {{$index}}
              <ul>
                 <li ng-repeat="city in counntry.cities">
-                    {{city.name}}
+                    {{city.name}} - Index {{$index}}- Parent Index {{parentIndex}}
+                    <!--{{$parent.$index}}-->
                 </li>
             </ul>
         </li>
