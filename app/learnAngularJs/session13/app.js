@@ -1,39 +1,30 @@
-var app = angular.module("appOrderBy",[]);
-app.controller("showHideCtrl",showHideCtrl);
-function showHideCtrl($scope) {
-    var techonologis = [
-        {Name: "C#1",Likes: 0,Dislikes: 300000000, BirthDay: new Date('12/3/2009'),status:true},
-        {Name: "java",Likes: 1,Dislikes: 2999999, BirthDay: new Date('12/4/2009'),status:false},
-        {Name: "python",Likes: 2,Dislikes: 1888888, BirthDay: new Date('12/5/2009'),status:true},
-        {Name: "Ruby",Likes: 3,Dislikes: 17777770, BirthDay: new Date('12/6/2009'),status:false}
-    ];
-    $scope.tech = techonologis;
-    $scope.sortColumn = 'name';
-    $scope.reverse = false;
-    $scope.searchText = '';
-    $scope.hideName = true;
-    $scope.showBirthDay = true;
-    $scope.increaLike = function (techo) {
-        techo.Likes ++;
-    };
-    $scope.decreaLike = function (techo) {
-        techo.Likes --;
-    };
-    $scope.sortData  = function (column) {
-        // console.log(column);
-        // console.log($scope.reverse);
-        if($scope.sortColumn == column)
-            $scope.reverse = !$scope.reverse;
-        else
-            $scope.reverse = false;
-        $scope.sortColumn = column;
-    };
-    $scope.getSortClass  = function (column) {
-        console.log(column);
-        if ($scope.sortColumn == column) {
-            return $scope.reverse ? 'arrow-up' : 'arrow-down';
-        }
-        return '';
-    };
-}
+(function () {
+    var app = angular.module('app', []);
 
+    app.controller('ngIncludeDemoCtrl', ngIncludeDemoCtrl);
+
+    ngIncludeDemoCtrl.$inject = ['$scope'];
+
+    function ngIncludeDemoCtrl($scope) {
+        var employees = [
+            { name: 'Hải', birthDate: new Date('12/3/1989'), salary: 15000000, gender: 'Male', status:true},
+            { name: 'Hoàng', birthDate: new Date('6/15/1990'), salary: 12000000, gender: 'Male', status: true },
+            { name: 'Long', birthDate: new Date('1/14/1992'), salary: 17000000, gender: 'Male', status: false },
+            { name: 'Trung', birthDate: new Date('12/3/1993'), salary: 12000000, gender: 'Male', status: true },
+            { name: 'Hương', birthDate: new Date('12/3/1995'), salary: 11000000, gender: 'Female', status: false },
+            { name: 'Thủy', birthDate: new Date('12/3/1988'), salary: 10000000, gender: 'Female', status: true }
+        ];
+        $scope.employees = employees;
+        $scope.limitRow = 3;
+        $scope.employeeView = "tableEmployeeView.html";
+    }
+
+    app.filter('status', function () {
+        return function (input) {
+            if (input == true)
+                return 'Kích hoạt';
+            else
+                return 'Khóa';
+        }
+    });
+})()
