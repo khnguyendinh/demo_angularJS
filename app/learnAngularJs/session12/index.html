@@ -2,7 +2,7 @@
 <html lang="en" ng-app="appOrderBy">
 <head>
     <meta charset="UTF-8">
-    <title>Session 11</title>
+    <title>Session 12</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -41,30 +41,32 @@
     </style>
 </head>
 <body>
-<div ng-controller="orderByCtrl">
+<div ng-controller="showHideCtrl">
     Search: <input type="text" ng-model="searchText">
+    Hide Name <input type="checkbox" ng-model="hideName">
+    Show BirthDay <input type="checkbox" ng-model="showBirthDay">
     <table class="table">
         <thead>
         <tr>
-            <td ng-click="sortData('Name')">Name<div ng-class="getSortClass('Name')"></div></td>
+            <td ng-hide="hideName" ng-click="sortData('Name')">Name<div ng-class="getSortClass('Name')"></div></td>
             <td ng-click="sortData('Likes')">Likes<div ng-class="getSortClass('Likes')"></div></td>
             <td ng-click="sortData('Dislikes')">DisLikes<div ng-class="getSortClass('Dislikes')"></div></td>
             <td>Action</td>
-            <td>BirthDay</td>
+            <td ng-show="showBirthDay">BirthDay</td>
             <td>Status</td>
         </tr>
         </thead>
         <tbody>
 
         <tr ng-repeat="techno in tech | orderBy:sortColumn:reverse | filter:searchText">
-            <td>{{techno.Name| uppercase}}</td>
+            <td ng-hide="hideName">{{techno.Name| uppercase}}</td>
             <td>{{techno.Likes}}</td>
             <td>{{techno.Dislikes|currency:"VND"}}</td>
             <td>
                 <button ng-click="increaLike(techno)">Like</button>
                 <button ng-click="decreaLike(techno)">DisLike</button>
             </td>
-            <td>{{techno.BirthDay|date:"dd/MM/yyyy"}}</td>
+            <td ng-show="showBirthDay">{{techno.BirthDay|date:"dd/MM/yyyy"}}</td>
             <td>{{techno.status }}</td>
         </tr>
         </tbody>
