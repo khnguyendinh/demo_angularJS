@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appOrderBy">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="orderBy.js"></script>
+</head>
+<body>
+<div ng-controller="orderByCtrl">
+    Show:<select ng-model="shortColumn">
+    <option value="Name">Name ASC</option>
+    <option value="Likes">Likes ASC</option>
+    <option value="Dislikes">Dislikes ASC</option>
+    </select>
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>Likes</td>
+            <td>DisLikes</td>
+            <td>Action</td>
+            <td>BirthDay</td>
+            <td>Status</td>
+        </tr>
+        <tr ng-repeat="techno in tech | orderBy:shortColumn">
+            <td>{{techno.Name| uppercase}}</td>
+            <td>{{techno.Likes}}</td>
+            <td>{{techno.Dislikes|currency:"VND"}}</td>
+            <td>
+                <button ng-click="increaLike(techno)">Like</button>
+                <button ng-click="decreaLike(techno)">DisLike</button>
+            </td>
+            <td>{{techno.BirthDay|date:"dd/MM/yyyy"}}</td>
+            <td>{{techno.status }}</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
